@@ -81,11 +81,13 @@ const App = () => {
         isFound = true
         foundIndex = index
         foundId = element.id
+        console.log('found person', element)
+        console.log(foundId)
       }
     })
     if(!isFound){
-      temp.push({name: newName, number: newNumber, id: max})
-      personService.create({name: newName, number: newNumber, id: max})
+      temp.push({name: newName, number: newNumber})
+      personService.create({name: newName, number: newNumber})
       setNewName('')
       setNewNumber('')
       setPersons(temp)
@@ -97,6 +99,7 @@ const App = () => {
     }
     else{
       if(window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)){
+        console.log('this is the found id ', foundId)
         personService
           .update(foundId,{name: newName, number: newNumber})
           .catch(error => {

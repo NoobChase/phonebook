@@ -3,6 +3,8 @@ import '../App.css'
 const Person = (props) =>{
   const deletePerson = (event, id) =>{
     event.preventDefault()
+    console.log('id in the person delete function ', id)
+  
     if(window.confirm('Delete '+ props.person.name+' ?')){
       personService
         .remove(id)
